@@ -56,7 +56,6 @@ It covers creating an S3 bucket, uploading files, enabling static hosting, setti
 ### Step 5: Access Your Website
 Once hosting is enabled, AWS provides a public URL:
 
-<img width="1358" height="580" alt="image" src="https://github.com/user-attachments/assets/d18e48ab-5ab2-40da-8ddf-5dac73cd5339" />
 
 ---
 
@@ -67,6 +66,8 @@ They allow more granular control compared to bucket policies.
 **Why ACLs?**
 - Object-level permissions.
 - Public read access without giving write permissions.
+- **HOW DO THEY ACTUALLY WORK ?**
+<img width="1043" height="745" alt="image" src="https://github.com/user-attachments/assets/093b8682-3ea6-4e36-bd9c-6f56a8a3ba0f" />
 
 ---
 
