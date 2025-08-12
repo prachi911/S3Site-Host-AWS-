@@ -1,83 +1,87 @@
-AWS S3 Static Website Hosting
-📌 Introduction
-This project showcases how to deploy and host a static website entirely on Amazon S3.
-It involves setting up an S3 bucket, uploading a simple HTML/CSS site, configuring it for static hosting, and controlling access via ACLs and bucket policies.
+# AWS S3 Static Website Hosting
 
-🛠 Tech & Tools Used
-Amazon S3 for storage and hosting
+## Overview
+This project demonstrates how to host a simple static website using **Amazon S3**.  
+It covers creating an S3 bucket, uploading files, enabling static hosting, setting permissions, and accessing the site via a public URL.
 
-ACLs (Access Control Lists) for fine-grained permission control
+---
 
-Custom error pages for better UX
-
-
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/4e9dfb8c-052a-47f4-acc1-962d5e63531f" />
+## Architecture
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7cb8f07b-6a11-448e-9667-eee6ccf0c232" />
 
 
-📂 Project Flow
-Create an S3 bucket
+---
 
-Upload website files
+## Features
+- Fully hosted static site on Amazon S3.
+- Custom error document for better user experience.
+- Access control using ACLs and bucket policies.
+- Public endpoint accessible from any browser.
 
-Enable static hosting
+---
 
-Manage public access
+## Setup and Deployment
 
-Access via public endpoint
+### Step 1: Create an S3 Bucket
+1. Log in to the **AWS Management Console**.
+2. Navigate to **S3**.
+3. Click **Create bucket**:
+   - Choose a unique name (e.g., `my-demo-static-site`).
+   - Select a region close to your target audience (e.g., `ap-south-1` – Mumbai).
+4. Under **Object Ownership**, enable **ACLs** for fine-grained permissions.
 
-🚀 Step-by-Step Setup
-1️⃣ Create an S3 Bucket
-Sign in to AWS Management Console → Search for S3.
+---
 
-Click Create bucket.
+### Step 2: Upload Files
+- Upload `index.html` and other assets.
+- Preserve folder structure during upload.
 
-Choose a globally unique name (e.g., my-static-site-demo).
+---
 
-Select a region close to your audience (e.g., ap-south-1 – Mumbai).
+### Step 3: Enable Static Website Hosting
+1. In **Properties**, go to **Static website hosting**.
+2. Enable hosting and set:
+   - **Index document:** `index.html`
+   - **Error document:** `error.html` (optional).
 
-Under Object Ownership, select ACLs enabled for detailed access control.
+---
 
-2️⃣ Upload Your Files
-Upload index.html and other assets to the bucket.
+### Step 4: Make Files Public Using ACL
+1. Select files in the bucket.
+2. Go to **Actions → Make public using ACL**.
+3. Grants public read access and resolves `403 Forbidden` errors.
 
-Keep the folder structure intact.
+---
 
-You can drag-and-drop or use the Upload button in the S3 console.
+### Step 5: Access Your Website
+Once hosting is enabled, AWS provides a public URL:
 
-3️⃣ Configure for Static Website Hosting
-In Properties, scroll to Static website hosting → Enable.
+<img width="1358" height="580" alt="image" src="https://github.com/user-attachments/assets/d18e48ab-5ab2-40da-8ddf-5dac73cd5339" />
 
-Set:
+---
 
-Index document: index.html
+## Using ACLs
+**Access Control Lists (ACLs)** define permissions for individual objects.  
+They allow more granular control compared to bucket policies.
 
-Error document: error.html (optional, for friendly error pages).
+**Why ACLs?**
+- Object-level permissions.
+- Public read access without giving write permissions.
 
-4️⃣ Set Permissions via ACL
-After uploading, select all files → Actions → Make public using ACL.
+---
 
-This step ensures visitors won’t get a 403 Forbidden error.
+## Troubleshooting
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| 403 Forbidden | Files are private | Make public using ACLs |
+| Website not loading | Wrong index document name | Ensure `index.html` is set correctly |
+| Custom error page not showing | Incorrect file path | Verify error document setting |
 
-5️⃣ Access Your Website
-Once configured, AWS provides a public endpoint in this format:
+---
 
-php-template
-Copy
-Edit
-http://<bucket-name>.s3-website-<region>.amazonaws.com
-⚙ Troubleshooting
-Issue	Possible Cause	Fix
-403 Forbidden	Objects are private	Make files public using ACLs
-Website not loading	Wrong index document name	Ensure index.html is set correctly
-Custom error page not showing	Misconfigured path	Verify file exists and matches error doc setting
+## Project Summary
+- **S3 Bucket** created to store files.
+- **Static hosting** enabled.
+- **ACLs configured** for public access.
+- Website live via AWS endpoint.
 
-🏗 Architecture Overview
-css
-Copy
-Edit
-[Local Files] → [AWS S3 Bucket] → [Static Website Hosting] → [Public Endpoint]
-S3 Bucket: Stores HTML, CSS, JS, and image files.
-
-Hosting Config: Makes the bucket behave like a website.
-
-ACL & Policies: Control access for public viewing.
